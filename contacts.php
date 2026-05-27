@@ -1,77 +1,80 @@
 <?php
-  include("database.php");
-$fnameErr = $lnameErr = $emailErr = $occuErr = $messageErr = $duplicate= "";
+//   include("database.php");
+// $fnameErr = $lnameErr = $emailErr = $occuErr = $messageErr = $duplicate= "";
 
-   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    
+//    if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
-      if(empty($_POST["firstname"])){
-        $fnameErr= "Please enter your first name";
-      } else {
-       $firstname= filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
-      }
 
-      if(empty($_POST["lastname"])){
-        $lnameErr= "Please enter your last name";
-      } else {
-      $lastname= filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
-      }
+//       if(empty($_POST["firstname"])){
+//         $fnameErr= "Please enter your first name";
+//       } else {
+//        $firstname= filter_input(INPUT_POST, "firstname", FILTER_SANITIZE_SPECIAL_CHARS);
+//       }
 
-      if(empty($_POST["email"])){
-        $emailErr= "Please enter your email";
-      } else {
-      $email= filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-      }
+//       if(empty($_POST["lastname"])){
+//         $lnameErr= "Please enter your last name";
+//       } else {
+//       $lastname= filter_input(INPUT_POST, "lastname", FILTER_SANITIZE_SPECIAL_CHARS);
+//       }
 
-      if(empty($_POST["occupation"])){
-        $occuErr= "Please enter your occupation";
-      } else {
-      $occupation= filter_input(INPUT_POST, "occupation", FILTER_SANITIZE_SPECIAL_CHARS);
-      }
+//       if(empty($_POST["email"])){
+//         $emailErr= "Please enter your email";
+//       } else {
+//       $email= filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+//       }
 
-      if(empty($_POST["message"])){
-        $messageErr= "Please enter your message";
-      } else {
-      $message= filter_input(INPUT_POST, "message", FILTER_SANITIZE_SPECIAL_CHARS);
-      }
-      
-      if (empty($fnameErr) && empty($lnameErr) && empty($emailErr) && empty($occuErr) && empty($messageErr)){
-          $sql= "INSERT INTO tbl_testimonials (firstname, lastname, email, occupation, message)
-                    VALUES ('$firstname', '$lastname', '$email', '$occupation', '$message')";
-                    
-                    
-                    
-                    try{
-                        mysqli_query($conn, $sql);
-                    }
-                    catch(mysqli_sql_exception){
-                        $duplicate= "The email is already used.";
-                    }
-                    
-            header("Location: contacts.php?success=1#form");
-            exit;
-            $successful= "Thnk you for your feedback!";
-      }
+//       if(empty($_POST["occupation"])){
+//         $occuErr= "Please enter your occupation";
+//       } else {
+//       $occupation= filter_input(INPUT_POST, "occupation", FILTER_SANITIZE_SPECIAL_CHARS);
+//       }
 
-  }
+//       if(empty($_POST["message"])){
+//         $messageErr= "Please enter your message";
+//       } else {
+//       $message= filter_input(INPUT_POST, "message", FILTER_SANITIZE_SPECIAL_CHARS);
+//       }
+
+//       if (empty($fnameErr) && empty($lnameErr) && empty($emailErr) && empty($occuErr) && empty($messageErr)){
+//           $sql= "INSERT INTO tbl_testimonials (firstname, lastname, email, occupation, message)
+//                     VALUES ('$firstname', '$lastname', '$email', '$occupation', '$message')";
+
+
+
+//                     try{
+//                         mysqli_query($conn, $sql);
+//                     }
+//                     catch(mysqli_sql_exception){
+//                         $duplicate= "The email is already used.";
+//                     }
+
+//             header("Location: contacts.php?success=1#form");
+//             exit;
+//             $successful= "Thnk you for your feedback!";
+//       }
+
+//   }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JF26WP4B3E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-JF26WP4B3E');
-</script>
-    
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JF26WP4B3E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-JF26WP4B3E');
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -81,7 +84,7 @@ $fnameErr = $lnameErr = $emailErr = $occuErr = $messageErr = $duplicate= "";
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <title>HOME LIBRARY WEBSITE</title>
-   <link rel="shortcut icon" href="assets/company_logo.png">
+  <link rel="shortcut icon" href="assets/company_logo.png">
 
   <link rel="stylesheet" href="style.css" />
 
@@ -157,76 +160,90 @@ $fnameErr = $lnameErr = $emailErr = $occuErr = $messageErr = $duplicate= "";
 </header>
 
 <body class="loading">
-    <!-- From Uiverse.io by 3bdel3ziz-T --> 
-<div class="loader">
-  <div class="container">
-    <div class="coffee-header">
-      <div class="coffee-header__buttons"></div>
-      <div class="coffee-header__display"></div>
-      <div class="coffee-header__details"></div>
-    </div>
-    <div class="coffee-medium">
-      <div class="coffe-medium__exit"></div>
-      <div class="coffee-medium__arm"></div>
-      <div class="coffee-medium__liquid"></div>
-      <div class="smoke one"></div>
-      <div class="smoke two"></div>
-      <div class="smoke three"></div>
-      <div class="smoke four"></div>
-      <div class="coffee-medium__cup"></div>
+  <!-- From Uiverse.io by 3bdel3ziz-T -->
+  <div class="loader">
+    <div class="container">
+      <div class="coffee-header">
+        <div class="coffee-header__buttons"></div>
+        <div class="coffee-header__display"></div>
+        <div class="coffee-header__details"></div>
+      </div>
+      <div class="coffee-medium">
+        <div class="coffe-medium__exit"></div>
+        <div class="coffee-medium__arm"></div>
+        <div class="coffee-medium__liquid"></div>
+        <div class="smoke one"></div>
+        <div class="smoke two"></div>
+        <div class="smoke three"></div>
+        <div class="smoke four"></div>
+        <div class="coffee-medium__cup"></div>
+      </div>
     </div>
   </div>
-</div>
 
   <button onclick="topFunction()" id="go-up-btn"><img src="./assets/icon/goUp.png" alt="" id="go-up-img"></button>
 
 
   <section class="contact-section" id="form">
-      <div class="testimonial-title">
-          
+    <div class="testimonial-title">
+
       <h2>TESTIMONIAL FORM</h2>
-        </div>
+    </div>
 
     <div class="contact-form">
-        <?php if (isset($_GET['success'])) : ?>
-        <div class="success"><p>Message sent successfully!</p></div>
-        <?php endif; ?>
+      <?php if (isset($_GET['success'])) : ?>
+        <div class="success">
+          <p>Message sent successfully!</p>
+        </div>
+      <?php endif; ?>
 
-      <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post">
+      <!-- <form action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>" method="post">
         <div class="two-col">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="First Name" name="firstname">
-            <div class="error"><?php echo $fnameErr; ?></div>
+            <div class="error"><?php
+            //  echo $fnameErr; 
+             ?></div>
           </div>
 
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Last Name" name="lastname">
-            <div class="error"><?php echo $lnameErr; ?></div>
+            <div class="error"><?php
+            //  echo $lnameErr; 
+             ?></div>
           </div>
         </div>
 
         <div class="two-col">
           <div class="form-group">
             <input type="email" class="form-control" placeholder="E-mail" name="email">
-            <div class="error"><?php echo $emailErr; ?></div>
-            <div class="error"><?php echo $duplicate; ?></div>
+            <div class="error"><?php
+            //  echo $emailErr;
+              ?></div>
+            <div class="error"><?php
+            //  echo $duplicate;
+              ?></div>
           </div>
 
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Occupation" name="occupation">
-            <div class="error"><?php echo $occuErr; ?></div>
+            <div class="error"><?php
+            //  echo $occuErr;
+              ?></div>
           </div>
-          
+
         </div>
         <div class="form-group">
           <textarea rows="5" placeholder="Message" class="form-control" name="message"></textarea>
-          <div class="error"><?php echo $messageErr; ?></div>
+          <div class="error"><?php
+          //  echo $messageErr;
+            ?></div>
         </div>
         <div class="button-wrapper">
-                    <input type="submit" class="btn contact-submit-btn" value="Send Message">
+          <input type="submit" class="btn contact-submit-btn" value="Send Message">
 
         </div>
-      </form>
+      </form> -->
 
       <div>
         <img src="image/contact-png.png" alt="">
@@ -250,116 +267,116 @@ $fnameErr = $lnameErr = $emailErr = $occuErr = $messageErr = $duplicate= "";
   </section>
 
   <footer>
-            <div class="section__container footer__container">
-                <div class="footer__col" id="logo-section">
-                    <a href="index.php" class="footer__logo">
-                        <img src="assets/logo/company_logo.png" alt="logo" />
-                    </a>
-                    <div class="footer-titleTagline">
-                        <h3>HOME LIBRARY</h3>
-                        <p>Your cozy space of infinite stories</p>
-                    </div>
+    <div class="section__container footer__container">
+      <div class="footer__col" id="logo-section">
+        <a href="index.php" class="footer__logo">
+          <img src="assets/logo/company_logo.png" alt="logo" />
+        </a>
+        <div class="footer-titleTagline">
+          <h3>HOME LIBRARY</h3>
+          <p>Your cozy space of infinite stories</p>
+        </div>
 
-                </div>
-                <div class="footer__col">
-                    <ul class="footer__links">
-                        <div class="dropdown-btn" id="dropdown-home" onclick="dropdownHome()">
-                            <li>
-                                <a href="index.php">
-                                    Home
-                                </a>
-                            </li>
-                            <img src="./assets/icon/dropdown.png" alt="" id="home-dropdownIcon" class="">
-                        </div>
+      </div>
+      <div class="footer__col">
+        <ul class="footer__links">
+          <div class="dropdown-btn" id="dropdown-home" onclick="dropdownHome()">
+            <li>
+              <a href="index.php">
+                Home
+              </a>
+            </li>
+            <img src="./assets/icon/dropdown.png" alt="" id="home-dropdownIcon" class="">
+          </div>
 
-                        <div class="dropdown-content" id="home-dropdown-content">
-                            <li>
-                                <a href="index.php#offers">
-                                    What we offer
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.php#tesimonials">
-                                    Testimonials
-                                </a>
-                            </li>
-                        </div>
+          <div class="dropdown-content" id="home-dropdown-content">
+            <li>
+              <a href="index.php#offers">
+                What we offer
+              </a>
+            </li>
+            <li>
+              <a href="index.php#tesimonials">
+                Testimonials
+              </a>
+            </li>
+          </div>
 
-                    </ul>
-                </div>
-                <div class="footer__col">
+        </ul>
+      </div>
+      <div class="footer__col">
 
-                    <ul class="footer__links">
-                        <div class="dropdown-btn" id="dropdown-products" onclick="dropdownProducts()">
-                            <li><a href="products.html">Products</a></li>
-                            <img src="./assets/icon/dropdown.png" alt="" id="products-dropdownIcon" class="">
-                        </div>
+        <ul class="footer__links">
+          <div class="dropdown-btn" id="dropdown-products" onclick="dropdownProducts()">
+            <li><a href="products.html">Products</a></li>
+            <img src="./assets/icon/dropdown.png" alt="" id="products-dropdownIcon" class="">
+          </div>
 
-                        <div class="dropdown-content" id="products-dropdown-content">
-                            <li><a href="products.html#beverages">Beverages</a></li>
-                            <li><a href="products.html#foodSection">Bites</a></li>
-                            <li><a href="products.html#booksSection">Books</a></li>
-                        </div>
+          <div class="dropdown-content" id="products-dropdown-content">
+            <li><a href="products.html#beverages">Beverages</a></li>
+            <li><a href="products.html#foodSection">Bites</a></li>
+            <li><a href="products.html#booksSection">Books</a></li>
+          </div>
 
-                    </ul>
-                </div>
-                <div class="footer__col">
+        </ul>
+      </div>
+      <div class="footer__col">
 
-                    <ul class="footer__links">
-                        <div class="dropdown-btn" id="dropdown-about" onclick="dropdownAbout()">
-                            <li><a href="about.html">About us</a></li>
-                            <img src="./assets/icon/dropdown.png" alt="" id="about-dropdownIcon" class="">
-                        </div>
-                        <div class="dropdown-content" id="about-dropdown-content">
-                            <li><a href="about.html#inspiration">Inspirations</a></li>
-                            <li><a href="about.html#people">Owner/Staffs</a></li>
-                        </div>
+        <ul class="footer__links">
+          <div class="dropdown-btn" id="dropdown-about" onclick="dropdownAbout()">
+            <li><a href="about.html">About us</a></li>
+            <img src="./assets/icon/dropdown.png" alt="" id="about-dropdownIcon" class="">
+          </div>
+          <div class="dropdown-content" id="about-dropdown-content">
+            <li><a href="about.html#inspiration">Inspirations</a></li>
+            <li><a href="about.html#people">Owner/Staffs</a></li>
+          </div>
 
-                    </ul>
-                </div>
-                <div class="footer__col">
+        </ul>
+      </div>
+      <div class="footer__col">
 
-                    <ul class="footer__links">
-                        <div class="dropdown-btn" id="dropdown-about">
-                            <li><a href="gallery.html">Gallery</a></li>
-                        </div>
-                    </ul>
-                </div>
-                <div class="footer__col">
+        <ul class="footer__links">
+          <div class="dropdown-btn" id="dropdown-about">
+            <li><a href="gallery.html">Gallery</a></li>
+          </div>
+        </ul>
+      </div>
+      <div class="footer__col">
 
-                    <ul class="footer__links">
-                        <div class="dropdown-btn" id="dropdown-about" onclick="dropdownContacts()">
-                            <li><a href="contacts.php">Contact</a></li>
-                            <img src="./assets/icon/dropdown.png" alt="" id="contacts-dropdownIcon" class="">
-                        </div>
-                        <div class="dropdown-content" id="contacts-dropdown-content">
-                            <li><a href="contacts.php#form">Form</a></li>
-                            <li><a href="contacts.php#map">Map</a></li>
-                        </div>
+        <ul class="footer__links">
+          <div class="dropdown-btn" id="dropdown-about" onclick="dropdownContacts()">
+            <li><a href="contacts.php">Contact</a></li>
+            <img src="./assets/icon/dropdown.png" alt="" id="contacts-dropdownIcon" class="">
+          </div>
+          <div class="dropdown-content" id="contacts-dropdown-content">
+            <li><a href="contacts.php#form">Form</a></li>
+            <li><a href="contacts.php#map">Map</a></li>
+          </div>
 
-                    </ul>
-                </div>
-            </div>
+        </ul>
+      </div>
+    </div>
 
 
-            <div class="footer__divider">
-                <hr />
-                <div class="footer__social">
-                    <a href="https://www.facebook.com/homelibrary.est2021"><img src="./assets/icon/facebook.png"
-                            alt="facebook icon" class="icon contact-icon" /></a>
+    <div class="footer__divider">
+      <hr />
+      <div class="footer__social">
+        <a href="https://www.facebook.com/homelibrary.est2021"><img src="./assets/icon/facebook.png"
+            alt="facebook icon" class="icon contact-icon" /></a>
 
-                    <a href="contacts.php#map"><img src="./assets/icon/location.png" alt="location icon"
-                            class="icon contact-icon" /></a>
+        <a href="contacts.php#map"><img src="./assets/icon/location.png" alt="location icon"
+            class="icon contact-icon" /></a>
 
-                    <a href="mailto:homelibrary.est2021@gmail.com"><img src="./assets/icon/email.png" alt="email icon"
-                            class="icon contact-icon" /></a>
-                </div>
-            </div>
+        <a href="mailto:homelibrary.est2021@gmail.com"><img src="./assets/icon/email.png" alt="email icon"
+            class="icon contact-icon" /></a>
+      </div>
+    </div>
 
-            <div class="footer__bar">
-                Copyright ©2025 CRUZDELACRUZ. All rights reserved.
-            </div>
-        </footer>
+    <div class="footer__bar">
+      Copyright ©2025 CRUZDELACRUZ. All rights reserved.
+    </div>
+  </footer>
 
   <script src="https://unpkg.com/scrollreveal"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -371,8 +388,8 @@ $fnameErr = $lnameErr = $emailErr = $occuErr = $messageErr = $duplicate= "";
 
 <?php
 
- 
 
 
-  mysqli_close($conn)
+
+// mysqli_close($conn)
 ?>
