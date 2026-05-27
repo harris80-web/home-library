@@ -157,54 +157,6 @@ include("database.php");
   </section>
 
 
-  <section class="client" id="tesimonials">
-    <div class="section__container client__container">
-      <h2 class="section__header">TESTIMONIALS</h2>
-      <!-- Swiper Container -->
-      <div class="swiper">
-        <!-- Swiper Wrapper -->
-        <div class="swiper-wrapper">
-          <!-- Slides -->
-          
-         <?php
-          
-          $sql = "SELECT * FROM tbl_testimonials ORDER BY id DESC";
-          $result = mysqli_query($conn, $sql);
-        
-            if(mysqli_num_rows($result) > 0){
-        
-                while ($row = mysqli_fetch_assoc($result)) {
-            
-                echo "<div class=\"swiper-slide\">";
-                echo "<div class=\"client__card\">";
-                echo   "<div class=\"client__details\">";
-                echo     "<img src=\"assets/logo/company_logo.jpg\" alt=\"client\" />";
-                echo     "<div>";
-                echo       "<h4>{$row['firstname']} {$row['lastname']}</h4>";
-                echo       "<h5>{$row['occupation']}</h5>";
-                echo     "</div>";
-                echo   "</div>";
-                echo   "<p>";
-                echo     "{$row['message']}";
-                echo   "</p>";
-                echo "</div>";
-                echo "</div>";
-                }
-            
-            }
-
-        
-        ?>
-          
-         
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  </section>
-
-
 
   <footer>
             <div class="section__container footer__container">
